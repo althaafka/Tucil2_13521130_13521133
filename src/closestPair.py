@@ -2,13 +2,13 @@ import random
 import math
 import time
 
+global euclidianCounter
 maxNum = 1000
 euclidianCounter = 0
 
 def createPoints(n, dimention):
     points = [[random.random()*maxNum for i in range(dimention)] for i in range(n)]
     sortPointsbyX(points)
-    print(points)
     return points
 
 def displayPoints(points):
@@ -50,8 +50,8 @@ def getPointsinStrip(points, closestDistance):
 def isClosestPairCandidate(points1,points2, closestDistance):
     for i in range(len(points1)):
         if (abs(points1[i]-points2[i])>=closestDistance):
-            return False;
-    return True;
+            return False
+    return True
 
 def closestPointsDividenConquer(points):
     if (len(points)<=3):
