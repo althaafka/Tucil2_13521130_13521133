@@ -54,6 +54,6 @@ def makegraph(points, closestPair) :
         figmatrix.show()
 
 if __name__ == "__main__":
-    points = createPoints(40,2)
+    points = createPoints(800,2)
     closestPair = closestPointsDividenConquer(points)
     makegraph(points,closestPair)

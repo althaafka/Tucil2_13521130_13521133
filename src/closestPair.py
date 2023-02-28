@@ -3,11 +3,12 @@ import math
 import time
 
 maxNum = 1000
-euclidianCounter = 0;
+euclidianCounter = 0
 
 def createPoints(n, dimention):
-    points = [[random.randint(0,maxNum) for i in range(dimention)] for i in range(n)]
+    points = [[random.random()*maxNum for i in range(dimention)] for i in range(n)]
     sortPointsbyX(points)
+    print(points)
     return points
 
 def displayPoints(points):
