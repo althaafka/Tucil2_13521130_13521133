@@ -7,14 +7,17 @@ maxNum = 1000
 euclidianCounter = 0
 
 def createPoints(n, dimention):
-    points = [[random.random()*maxNum for i in range(dimention)] for i in range(n)]
+    # membuat array of points sebanyak n, poin yang dibentuk memiliki dimensi dimention
+    points = [[round((random.random()*maxNum),2) for i in range(dimention)] for i in range(n)]
     sortPointsbyX(points)
     return points
 
 def displayPoints(points):
+    # menampilkan titik-titik
     print(points)
 
 def euclidian(point1,point2):
+    # menghitung jarak antara dua titik
     dimention = len(point1)
     sum=0;
     for i in range(dimention):
@@ -22,24 +25,28 @@ def euclidian(point1,point2):
     return math.sqrt(sum)
 
 def closestPointBrute(points):
+    # mencari titik terdekat dengan pendekatan brute force
     if len(points)==2 :
-        return points;
+        return points
     else:
         global euclidianCounter
-        min = 9999999999999;
-        minPair = [points[0],points[0]];
-        for i in range(len(points)):
+        min = 9999999999999
+        minPair = [points[0],points[0]]
+        for i in range(len(points)-1):
             for j in range(i+1,len(points)):
+                euclidiandis = euclidian(points[i],points[j])
                 euclidianCounter+=1
-                if (euclidian(points[i],points[j])<min):
-                    min = euclidian(points[i],points[j])
+                if (euclidiandis<min):
+                    min = euclidiandis
                     minPair = [points[i],points[j]]
         return minPair
 
 def sortPointsbyX(points):
+    # mengurutkan array of titik dengan axis x terurut membesar
     points.sort(key=lambda x: x[0])
 
 def getPointsinStrip(points, closestDistance):
+    # mengembalikan array of titik yang jarak axis x nya dengan strip sebesar < closestdistance sementara
     strip = []
     mid = points[len(points)//2]
     for i in range(len(points)):
@@ -50,19 +57,27 @@ def getPointsinStrip(points, closestDistance):
 def isClosestPairCandidate(points1,points2, closestDistance):
     for i in range(len(points1)):
         if (abs(points1[i]-points2[i])>=closestDistance):
-            return False
-    return True
+            return False;
+    return True;
 
 def closestPointsDividenConquer(points):
+    # menentukan sepasang titik terdekat dengan pendekatan divide & conquer
     if (len(points)<=3):
+        # SOLVE : jika hanya terdapat <=3 titik tidak perlu melakukan divide & conquer
         return closestPointBrute(points)
     else:
+        # DIVIDE : membagi titik-titik menjadi dua bagian points1,points2 sama banyak 
+        # (jika ganjil len(points1)= len(points2)+1)
         mid = len(points)//2
         points1 = points[:mid]
         points2 = points[mid:]
+
+        # CONQUER : secara rekursif mencari sepasang titik terdekat dengan 
+        # algoritma divide & conquer
         closestPair1 = closestPointsDividenConquer(points1)
         closestPair2 = closestPointsDividenConquer(points2)
 
+        # COMBINE
         if (euclidian(closestPair1[0],closestPair1[1])<=euclidian(closestPair2[0],closestPair2[1])):
             closestPair = closestPair1
         else:
@@ -70,8 +85,8 @@ def closestPointsDividenConquer(points):
 
         closestDistance = euclidian(closestPair[0],closestPair[1])
 
+        # penanganan kasus apabila sepasang titik terdekat terpisah pada saat DIVIDE
         strip = getPointsinStrip(points,closestDistance)
-
         global euclidianCounter
         for i in range(len(strip)):
             for j in range(i+1, len(strip)):
@@ -80,6 +95,7 @@ def closestPointsDividenConquer(points):
                     if (euclidian(strip[i],strip[j])<closestDistance):
                         closestPair = [strip[i],strip[j]]
                         closestDistance = euclidian(strip[i],strip[j])
+                        
         return closestPair
 
 
@@ -87,8 +103,6 @@ if __name__ == "__main__":
     n = int(input("n = "))
     dimention = int(input("dimention = "))
     points = createPoints(n,dimention)
-    displayPoints(points)
-    # print(euclidian(points[0],points[1]))
     
     sa = time.time()
     closestPairBrute = closestPointBrute(points)
