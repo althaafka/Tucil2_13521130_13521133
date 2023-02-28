@@ -2,7 +2,7 @@ import random
 import math
 import time
 
-maxNum = 100
+maxNum = 1000
 euclidianCounter = 0;
 
 def createPoints(n, dimention):
@@ -61,27 +61,20 @@ def closestPointsDividenConquer(points):
         points2 = points[mid:]
         closestPair1 = closestPointsDividenConquer(points1)
         closestPair2 = closestPointsDividenConquer(points2)
-        # print("closestPair1 = ", closestPair1)
-        # print("closestPair2 = ", closestPair2)
 
         if (euclidian(closestPair1[0],closestPair1[1])<=euclidian(closestPair2[0],closestPair2[1])):
             closestPair = closestPair1
         else:
             closestPair = closestPair2
-        # print("closestPair = ", closestPair)
 
         closestDistance = euclidian(closestPair[0],closestPair[1])
 
-        # print("closestDistance = ", closestDistance)
         strip = getPointsinStrip(points,closestDistance)
-        # print("stripPoints = ", strip)
 
         global euclidianCounter
         for i in range(len(strip)):
             for j in range(i+1, len(strip)):
                 if (isClosestPairCandidate(strip[i],strip[j],closestDistance)):
-                    # print("closestpair candidate = ",strip[i],strip[j])
-                    # print("closestDistance = ",  closestDistance)
                     euclidianCounter+=1
                     if (euclidian(strip[i],strip[j])<closestDistance):
                         closestPair = [strip[i],strip[j]]
