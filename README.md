@@ -1,7 +1,4 @@
 # Tucil2_13521130_13521133
-Tugas Kecil 2 Strategi Algoritma
-
-# Tucil2_13521130_13521133
 Tugas Kecil 2 Strategi Algoritma <br>
 IF2211 STRATEGI ALGORITMA <br>
 Mencari Pasangan Titik Terdekat 3D 
