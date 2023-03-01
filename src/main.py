@@ -1,6 +1,6 @@
 from closestPair import *
 from visualisasi import *
-
+from visualisasi import euclidianCounter
 print('''
 ░█████╗░██╗░░░░░░█████╗░░██████╗███████╗░██████╗████████╗  ██████╗░░█████╗░██╗███╗░░██╗████████╗
 ██╔══██╗██║░░░░░██╔══██╗██╔════╝██╔════╝██╔════╝╚══██╔══╝  ██╔══██╗██╔══██╗██║████╗░██║╚══██╔══╝
@@ -38,13 +38,14 @@ ________________________________________________________________________________
 _/____/____/______(___(___(_ ___(___ ______/_________(___/__/______(___ __(___ _
                                                                                                                                                    
 ''')
+euclidianCounterClear()
 sa = time.time()
 closestPairBrute = closestPointBrute(points)
 fa = time.time()
 print("Closest pair by Brute Force = ", closestPairBrute)
 print("Shortest distance           = ", euclidian(closestPairBrute[0],closestPairBrute[1]))
 print("Brute time                  = ", (fa-sa)*1000)
-print("Euclidean used              = ", euclidianCounter)
+print("Euclidean used              = ", euclidianCounterf())
 
 print('\n\n\n')
 print('''
@@ -59,14 +60,14 @@ print('''
                                                                            |_|                  
 
 ''')
-euclidianCounter = 0
+euclidianCounterClear()
 sb = time.time()
 closestPair = closestPointsDividenConquer(points)
 fb = time.time()
 print("Closest pair by Divide and Conquer = ",closestPair)
 print("Shortest distance                  = ", euclidian(closestPair[0],closestPair[1]))
 print("Divide and Conquer time            = ",(fb-sb)*1000)
-print("Eucludian used                     = ", euclidianCounter)
+print("Eucludian used                     = ", euclidianCounterf())
 
 print('\n\n\n\n')
 print('''
@@ -77,5 +78,4 @@ print('''
                               |___/  |___/            |_|                  
 
 ''')
-
 makegraph(points,closestPair)

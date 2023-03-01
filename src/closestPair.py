@@ -60,6 +60,15 @@ def isClosestPairCandidate(points1,points2, closestDistance):
             return False;
     return True;
 
+def euclidianCounterf():
+    # return euclidianCounter
+    return euclidianCounter
+
+def euclidianCounterClear():
+    # reset euclidianCounter
+    global euclidianCounter
+    euclidianCounter=0
+
 def closestPointsDividenConquer(points):
     # menentukan sepasang titik terdekat dengan pendekatan divide & conquer
     if (len(points)<=3):
