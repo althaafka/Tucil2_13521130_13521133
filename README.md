@@ -24,7 +24,7 @@ Algoritma divide and conquer dilakukan dengan memeriksa apakah jumlah kurang dar
 
 ## Pre-Requisite
 * Python 3.9.12, dapat diunduh melalui `https://www.python.org/downloads/`
-* Library random, math, time, numpy, pandas, dan plotly, dapat diunduh dengan mengikuti langkah-langkah pada laman 'https://packaging.python.org/en/latest/tutorials/installing-packages/'
+* Library random, math, time, numpy, pandas, dan plotly, dapat diunduh dengan mengikuti langkah-langkah pada laman `https://packaging.python.org/en/latest/tutorials/installing-packages/`
 
 ## Cara Menjalankan Program
 1. Pastikan semua prerequisit telah dipenuhi, kemudian buka terminal pada directory program, kemudian masukkan perintah 'python3 src/main.py'
