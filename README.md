@@ -27,7 +27,7 @@ Algoritma divide and conquer dilakukan dengan memeriksa apakah jumlah kurang dar
 * Library random, math, time, numpy, pandas, dan plotly, dapat diunduh dengan mengikuti langkah-langkah pada laman `https://packaging.python.org/en/latest/tutorials/installing-packages/`
 
 ## Cara Menjalankan Program
-1. Pastikan semua prerequisit telah dipenuhi, kemudian buka terminal pada directory program, kemudian masukkan perintah 'python3 src/main.py'
+1. Pastikan semua prerequisit telah dipenuhi, kemudian buka terminal pada directory program, kemudian masukkan perintah `python3 src/main.py`
 2. Masukkan jumlah titik yang diinginkan pada terminal
 3. Masukkan dimensi titik yang diinginkan pada terminal
 4. Hasil akan dicetak pada terminal kemudian ditampilkan laman HTML grafik dari titik-titik yang telah digenerate
